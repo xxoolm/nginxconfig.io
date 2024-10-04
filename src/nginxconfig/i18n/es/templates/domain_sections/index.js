@@ -1,5 +1,5 @@
 /*
-Copyright 2021 DigitalOcean
+Copyright 2024 DigitalOcean
 
 This code is licensed under the MIT License.
 You may obtain a copy of the License at
@@ -24,15 +24,26 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-import https from './https';
-import logging from './logging';
-import php from './php';
-import presets from './presets';
-import python from './python';
-import reverseProxy from './reverse_proxy';
-import routing from './routing';
-import server from './server';
-import restrict from './restrict';
-import onion from './onion';
+import https from './https.js';
+import logging from './logging.js';
+import php from './php.js';
+import presets from './presets.js';
+import python from './python.js';
+import reverseProxy from './reverse_proxy.js';
+import routing from './routing.js';
+import server from './server.js';
+import restrict from './restrict.js';
+import onion from './onion.js';
 
-export default { https, logging, php, presets, python, reverseProxy, routing, server, restrict, onion };
+export default {
+    https,
+    logging,
+    php,
+    presets,
+    python,
+    reverseProxy,
+    routing,
+    server,
+    restrict,
+    onion,
+};

@@ -1,5 +1,5 @@
 /*
-Copyright 2020 DigitalOcean
+Copyright 2024 DigitalOcean
 
 This code is licensed under the MIT License.
 You may obtain a copy of the License at
@@ -24,7 +24,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-import common from '../../common';
+import common from '../../common.js';
 
 export default {
     modularizedStructure: 'Modularized structure',
@@ -40,13 +40,15 @@ export default {
     resetAllDomainsConfig: 'Reset all domain configs',
     resetDomainConfig: 'Reset domain config',
     removeDomain: 'Remove domain',
-    yesImSure: 'Yes, I\'m sure',
+    yesImSure: "Yes, I'm sure",
     noCancel: 'No, cancel',
     tools: 'Tools',
-    resetGlobalConfigBody: 'Are you sure you want to reset all configuration options in the global config section?',
+    resetGlobalConfigBody:
+        'Are you sure you want to reset all configuration options in the global config section?',
     resetAllDomainsConfigBody: 'Are you sure you want to reset the configuration of ALL domains?',
     removeAllDomainsBody: 'Are you sure you want to remove ALL domain configurations?',
-    areYouSureYouWantToResetAllConfigurationOptionsForThe: 'Are you sure you want to reset all configuration options for the',
+    areYouSureYouWantToResetAllConfigurationOptionsForThe:
+        'Are you sure you want to reset all configuration options for the',
     domain: 'domain?',
     areYouSureYouWantToRemoveThe: 'Are you sure you want to remove the ',
     domainConfiguration: 'domain configuration?',

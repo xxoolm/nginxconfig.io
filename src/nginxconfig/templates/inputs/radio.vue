@@ -1,5 +1,5 @@
 <!--
-Copyright 2022 DigitalOcean
+Copyright 2024 DigitalOcean
 
 This code is licensed under the MIT License.
 You may obtain a copy of the License at
@@ -34,12 +34,18 @@ THE SOFTWARE.
         </template>
 
         <!-- Load in all other slots -->
-        <template v-for="(_, slot) in $slots" #[slot]="scope">
-            <slot :name="slot" v-bind="scope || {}" />
+        <template
+            v-for="(_, slot) in $slots"
+            #[slot]="scope"
+        >
+            <slot
+                :name="slot"
+                v-bind="scope || {}"
+            />
         </template>
     </PrettyRadio>
 </template>
 
 <script setup>
-    import PrettyRadio from 'do-vue/src/templates/pretty-checkbox-vue/pretty_radio';
+    import PrettyRadio from 'do-vue/src/templates/pretty-checkbox-vue/pretty_radio.vue';
 </script>

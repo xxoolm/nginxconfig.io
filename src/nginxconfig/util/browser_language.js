@@ -1,5 +1,5 @@
 /*
-Copyright 2022 DigitalOcean
+Copyright 2024 DigitalOcean
 
 This code is licensed under the MIT License.
 You may obtain a copy of the License at
@@ -24,15 +24,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-import { fromSep } from './language_packs';
+import { fromSep } from './language_packs.js';
 
-export default availablePacks => {
+export default (availablePacks) => {
     if (typeof window === 'object' && typeof window.navigator === 'object') {
         const userLocales = new Set();
 
         // Get the user languages
         if (Array.isArray(window.navigator.languages))
-            window.navigator.languages.forEach(locale => userLocales.add(locale));
+            window.navigator.languages.forEach((locale) => userLocales.add(locale));
         if (typeof window.navigator.language === 'string')
             userLocales.add(window.navigator.language);
         if (Intl && 'DateTimeFormat' in Intl)
@@ -40,7 +40,9 @@ export default availablePacks => {
                 userLocales.add(Intl.DateTimeFormat().resolvedOptions().locale);
 
         // Try to find an exact region/language match
-        const exactMatch = [...userLocales.values()].find(locale => availablePacks.includes(fromSep(locale, '-')));
+        const exactMatch = [...userLocales.values()].find((locale) =>
+            availablePacks.includes(fromSep(locale, '-')),
+        );
         if (exactMatch) return fromSep(exactMatch, '-');
 
         // Build a map of languages to pack
@@ -51,7 +53,9 @@ export default availablePacks => {
         }, {});
 
         // Try to match a user language to a pack language
-        const langMatch = [...userLocales.values()].find(x => Object.keys(i18nPackLanguages).includes(x.split('-')[0].toLowerCase()));
+        const langMatch = [...userLocales.values()].find((x) =>
+            Object.keys(i18nPackLanguages).includes(x.split('-')[0].toLowerCase()),
+        );
         if (langMatch) return i18nPackLanguages[langMatch.split('-')[0].toLowerCase()];
 
         return false;

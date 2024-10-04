@@ -1,5 +1,5 @@
 /*
-Copyright 2020 DigitalOcean
+Copyright 2024 DigitalOcean
 
 This code is licensed under the MIT License.
 You may obtain a copy of the License at
@@ -24,7 +24,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-import common from '../../common';
+import common from '../../common.js';
 
 export default {
     downloadTheGeneratedConfig: '<b>Baixe</b> a configuração gerada:',
@@ -32,9 +32,11 @@ export default {
     directory: 'diretórioi do seu servidor.',
     or: 'ou, ',
     copyBase64StringOfCompressedConfig: 'Copie uma string base64 da configuração compactado',
-    pasteItInYourServersCommandLineAndExecute: ', cole-a na linha de comando do seu servidor e execute-a.',
+    pasteItInYourServersCommandLineAndExecute:
+        ', cole-a na linha de comando do seu servidor e execute-a.',
     navigateToYourNginxConfigurationDirectoryOnYourServer: `Navegue até o <b>diretório de configuração</b> do ${common.nginx} em seu servidor:`,
     createABackupOfYourCurrentNginxConfiguration: `Crie um <b>backup</b> da sua configuração atual do ${common.nginx}:`,
-    extractTheNewCompressedConfigurationArchiveUsingTar: '<b>Extraia</b> o novo arquivo de configuração compactado usando tar:',
+    extractTheNewCompressedConfigurationArchiveUsingTar:
+        '<b>Extraia</b> o novo arquivo de configuração compactado usando tar:',
     download: 'Baixar',
 };

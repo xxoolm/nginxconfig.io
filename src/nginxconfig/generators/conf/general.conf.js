@@ -1,5 +1,5 @@
 /*
-Copyright 2022 DigitalOcean
+Copyright 2024 DigitalOcean
 
 This code is licensed under the MIT License.
 You may obtain a copy of the License at
@@ -24,7 +24,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-import { gzipTypes, extensions } from '../../util/types_extensions';
+import { gzipTypes, extensions } from '../../util/types_extensions.js';
 
 export default (domains, global) => {
     const config = {};
@@ -46,11 +46,13 @@ export default (domains, global) => {
         config[loc] = {
             add_header: 'Cache-Control "no-cache"',
         };
-     }
- 
+    }
 
-    if (domains.every(d => d.routing.root.computed)) {
-        if (global.performance.assetsExpiration.computed === global.performance.mediaExpiration.computed) {
+    if (domains.every((d) => d.routing.root.computed)) {
+        if (
+            global.performance.assetsExpiration.computed ===
+            global.performance.mediaExpiration.computed
+        ) {
             if (global.performance.assetsExpiration.computed) {
                 // Assets & media combined
                 config['# assets, media'] = '';
@@ -78,7 +80,10 @@ export default (domains, global) => {
             }
         }
 
-        if (global.performance.svgExpiration.computed === global.performance.fontsExpiration.computed) {
+        if (
+            global.performance.svgExpiration.computed ===
+            global.performance.fontsExpiration.computed
+        ) {
             if (global.performance.svgExpiration.computed) {
                 // SVG & fonts combined
                 config['# svg, fonts'] = '';

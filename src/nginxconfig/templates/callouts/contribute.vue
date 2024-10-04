@@ -1,5 +1,5 @@
 <!--
-Copyright 2022 DigitalOcean
+Copyright 2024 DigitalOcean
 
 This code is licensed under the MIT License.
 You may obtain a copy of the License at
@@ -25,7 +25,10 @@ THE SOFTWARE.
 -->
 
 <template>
-    <div class="callout floating" :style="style">
+    <div
+        class="callout floating"
+        :style="style"
+    >
         <div class="close">
             <p>
                 {{ $t('templates.callouts.contribute.wantToContributeChanges') }}
@@ -46,7 +49,7 @@ THE SOFTWARE.
 </template>
 
 <script>
-    import analytics from '../../util/analytics';
+    import analytics from '../../util/analytics.js';
 
     export default {
         name: 'ContributeCallout',
@@ -61,10 +64,12 @@ THE SOFTWARE.
                 return this.$data.scrolled && !this.$data.closed;
             },
             style() {
-                return this.visible ? undefined : {
+                const nonVisibleStyle = {
                     opacity: 0,
                     pointerEvents: 'none',
                 };
+
+                return this.visible ? undefined : nonVisibleStyle;
             },
         },
         mounted() {

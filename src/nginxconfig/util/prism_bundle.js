@@ -1,5 +1,5 @@
 /*
-Copyright 2022 DigitalOcean
+Copyright 2024 DigitalOcean
 
 This code is licensed under the MIT License.
 You may obtain a copy of the License at
@@ -26,13 +26,13 @@ THE SOFTWARE.
 
 import Clipboard from 'clipboard';
 import Prism from 'prismjs';
-import 'prismjs/components/prism-nginx';
-import 'prismjs/components/prism-bash';
-import 'prismjs/plugins/keep-markup/prism-keep-markup';
-import 'prismjs/plugins/toolbar/prism-toolbar';
+import 'prismjs/components/prism-nginx.js';
+import 'prismjs/components/prism-bash.js';
+import 'prismjs/plugins/keep-markup/prism-keep-markup.js';
+import 'prismjs/plugins/toolbar/prism-toolbar.js';
 import 'prismjs/plugins/toolbar/prism-toolbar.css';
 
-import { warn } from './log';
+import { warn } from './log.js';
 
 // Custom copy to clipboard (based on the Prism one)
 const copyToClipboard = () => {
@@ -41,13 +41,13 @@ const copyToClipboard = () => {
         return;
     }
 
-    Prism.plugins.toolbar.registerButton('copy-to-clipboard', env => {
+    Prism.plugins.toolbar.registerButton('copy-to-clipboard', (env) => {
         const linkCopy = document.createElement('button');
         linkCopy.textContent = 'Copy';
 
         const element = env.element;
         const clip = new Clipboard(linkCopy, {
-            'text': () => element.textContent,
+            text: () => element.textContent,
         });
 
         const resetText = () => {
@@ -57,10 +57,12 @@ const copyToClipboard = () => {
         };
 
         const emitEvent = () => {
-            linkCopy.dispatchEvent(new CustomEvent('copied', {
-                bubbles: true,
-                detail: { text: element.textContent },
-            }));
+            linkCopy.dispatchEvent(
+                new CustomEvent('copied', {
+                    bubbles: true,
+                    detail: { text: element.textContent },
+                }),
+            );
         };
 
         clip.on('success', () => {

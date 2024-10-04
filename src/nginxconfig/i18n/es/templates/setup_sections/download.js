@@ -1,5 +1,5 @@
 /*
-Copyright 2021 DigitalOcean
+Copyright 2024 DigitalOcean
 
 This code is licensed under the MIT License.
 You may obtain a copy of the License at
@@ -24,7 +24,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-import common from '../../common';
+import common from '../../common.js';
 
 // Here is a HACK, because the real traslation is: "y subirla en la carpeta '/etc/nginx' de tu servidor. "
 // but the HTML order of the templates are wrong: "y subirla en el servidor '/etc/nginx' carpeta."
@@ -35,9 +35,11 @@ export default {
     directory: '.',
     or: 'o, ',
     copyBase64StringOfCompressedConfig: 'Copiar el texto comprimido en base64 de la configuracion',
-    pasteItInYourServersCommandLineAndExecute: ', péguelo en la línea de comando de su servidor y ejecútelo.',
+    pasteItInYourServersCommandLineAndExecute:
+        ', péguelo en la línea de comando de su servidor y ejecútelo.',
     navigateToYourNginxConfigurationDirectoryOnYourServer: `Navega en <b>la carpeta de configuracion</b> de ${common.nginx} de tu servidor:`,
     createABackupOfYourCurrentNginxConfiguration: `Crea un <b>respaldo</b> de tu configuracion actual de ${common.nginx}:`,
-    extractTheNewCompressedConfigurationArchiveUsingTar: '<b>Extraer</b> el nuevo archivo de configuracion comprimido usando tar:',
+    extractTheNewCompressedConfigurationArchiveUsingTar:
+        '<b>Extraer</b> el nuevo archivo de configuracion comprimido usando tar:',
     download: 'Descargar',
 };

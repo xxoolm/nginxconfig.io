@@ -1,5 +1,5 @@
 /*
-Copyright 2021 DigitalOcean
+Copyright 2024 DigitalOcean
 
 This code is licensed under the MIT License.
 You may obtain a copy of the License at
@@ -24,7 +24,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-import common from '../../common';
+import common from '../../common.js';
 
 export default {
     downloadTheGeneratedConfig: '<b>Pobierz</b> wygenerowany konfig:',
@@ -35,6 +35,7 @@ export default {
     pasteItInYourServersCommandLineAndExecute: ', wklej go w terminalu na serwerze i uruchom go.',
     navigateToYourNginxConfigurationDirectoryOnYourServer: `Nawiguj do <b>ścieżki konfiguracyjnej</b> ${common.nginx} na swoim serwerze:`,
     createABackupOfYourCurrentNginxConfiguration: `Utrwórz <b>kopię zapasową</b> swojego obecnego pliku konfiguracyjnego ${common.nginx}:`,
-    extractTheNewCompressedConfigurationArchiveUsingTar: '<b>Wypakuj</b> skompresowane archiwum z konfiguracją, korzystając z tar:',
+    extractTheNewCompressedConfigurationArchiveUsingTar:
+        '<b>Wypakuj</b> skompresowane archiwum z konfiguracją, korzystając z tar:',
     download: 'Pobierz',
 };

@@ -1,5 +1,5 @@
 <!--
-Copyright 2022 DigitalOcean
+Copyright 2024 DigitalOcean
 
 This code is licensed under the MIT License.
 You may obtain a copy of the License at
@@ -26,9 +26,14 @@ THE SOFTWARE.
 
 <template>
     <div>
-        <div v-if="!pythonServerEnabled" class="field is-horizontal is-aligned-top">
+        <div
+            v-if="!pythonServerEnabled"
+            class="field is-horizontal is-aligned-top"
+        >
             <div class="field-label">
-                <label class="label">{{ $t('templates.globalSections.python.pythonServer') }}</label>
+                <label class="label">
+                    {{ $t('templates.globalSections.python.pythonServer') }}
+                </label>
             </div>
             <div class="field-body">
                 <div class="field">
@@ -41,9 +46,14 @@ THE SOFTWARE.
             </div>
         </div>
 
-        <div v-else class="field is-horizontal">
+        <div
+            v-else
+            class="field is-horizontal"
+        >
             <div class="field-label">
-                <label class="label">{{ $t('templates.globalSections.python.pythonServer') }}</label>
+                <label class="label">
+                    {{ $t('templates.globalSections.python.pythonServer') }}
+                </label>
             </div>
             <div class="field-body">
                 <div class="field">
@@ -62,8 +72,8 @@ THE SOFTWARE.
 </template>
 
 <script>
-    import delegatedFromDefaults from '../../util/delegated_from_defaults';
-    import computedFromDefaults from '../../util/computed_from_defaults';
+    import delegatedFromDefaults from '../../util/delegated_from_defaults.js';
+    import computedFromDefaults from '../../util/computed_from_defaults.js';
 
     const defaults = {
         pythonServer: {
@@ -73,12 +83,12 @@ THE SOFTWARE.
     };
 
     export default {
-        name: 'GlobalPython',                               // Component name
-        display: 'common.python',                           // Display name for tab (i18n key)
-        key: 'python',                                      // Key for data in parent
-        delegated: delegatedFromDefaults(defaults),         // Data the parent will present here
+        name: 'GlobalPython', // Component name
+        display: 'common.python', // Display name for tab (i18n key)
+        key: 'python', // Key for data in parent
+        delegated: delegatedFromDefaults(defaults), // Data the parent will present here
         props: {
-            data: Object,                                   // Data delegated back to us from parent
+            data: Object, // Data delegated back to us from parent
         },
         computed: computedFromDefaults(defaults, 'python'), // Getters & setters for the delegated data
         watch: {
@@ -86,9 +96,15 @@ THE SOFTWARE.
             '$parent.$parent.$data.domains': {
                 handler(data) {
                     for (const domain of data) {
-                        if (domain && domain.python && domain.python.python && domain.python.python.computed) {
+                        if (
+                            domain &&
+                            domain.python &&
+                            domain.python.python &&
+                            domain.python.python.computed
+                        ) {
                             this.$props.data.pythonServer.enabled = true;
-                            this.$props.data.pythonServer.computed = this.$props.data.pythonServer.value;
+                            this.$props.data.pythonServer.computed =
+                                this.$props.data.pythonServer.value;
                             return;
                         }
                     }

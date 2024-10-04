@@ -1,5 +1,5 @@
 /*
-Copyright 2021 DigitalOcean
+Copyright 2024 DigitalOcean
 
 This code is licensed under the MIT License.
 You may obtain a copy of the License at
@@ -24,17 +24,20 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-import common from '../../common';
+import common from '../../common.js';
 
 export default {
     downloadTheGeneratedConfig: 'Generierte Konfigurationsdateien <b>herunterladen</b>:',
     andUploadItToYourServers: 'Auf deinen Server <b>hochladen</b> und ins Verzeichnis ',
     directory: 'verschieben.',
     or: 'Oder ',
-    copyBase64StringOfCompressedConfig: 'kopiere einen Base64 String der komprimierten Konfiguration',
-    pasteItInYourServersCommandLineAndExecute: ', füge ihn auf der Kommandozeile deines Servers ein und führe ihn aus.',
+    copyBase64StringOfCompressedConfig:
+        'kopiere einen Base64 String der komprimierten Konfiguration',
+    pasteItInYourServersCommandLineAndExecute:
+        ', füge ihn auf der Kommandozeile deines Servers ein und führe ihn aus.',
     navigateToYourNginxConfigurationDirectoryOnYourServer: `Wechsle in das ${common.nginx} <b>Konfigurationsverzeichnis</b> deines Servers:`,
     createABackupOfYourCurrentNginxConfiguration: `Erstelle ein <b>Backup</b> deiner aktuellen ${common.nginx} Konfiguration:`,
-    extractTheNewCompressedConfigurationArchiveUsingTar: '<b>Entpacke</b> das komprimierte Konfigurationsverzeichnis mittels tar:',
+    extractTheNewCompressedConfigurationArchiveUsingTar:
+        '<b>Entpacke</b> das komprimierte Konfigurationsverzeichnis mittels tar:',
     download: 'Download',
 };

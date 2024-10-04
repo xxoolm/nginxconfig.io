@@ -1,5 +1,5 @@
 /*
-Copyright 2021 DigitalOcean
+Copyright 2024 DigitalOcean
 
 This code is licensed under the MIT License.
 You may obtain a copy of the License at
@@ -24,7 +24,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-import common from '../../common';
+import common from '../../common.js';
 
 export default {
     modularizedStructure: 'Estructura modularizada',
@@ -43,10 +43,13 @@ export default {
     yesImSure: 'Si, Estoy seguro',
     noCancel: 'No, cancelar',
     tools: 'Herramientas',
-    resetGlobalConfigBody: '¿Estás seguro de que desea reiniciar todas las opciones de configuración en la sección de configuración global?',
-    resetAllDomainsConfigBody: '¿Estás seguro de que desea reiniciar la configuración de TODOS los dominios?',
+    resetGlobalConfigBody:
+        '¿Estás seguro de que desea reiniciar todas las opciones de configuración en la sección de configuración global?',
+    resetAllDomainsConfigBody:
+        '¿Estás seguro de que desea reiniciar la configuración de TODOS los dominios?',
     removeAllDomainsBody: '¿Estás seguro de que desea quitar TODAS las configuraciones de dominio?',
-    areYouSureYouWantToResetAllConfigurationOptionsForThe: '¿Estás seguro de que desea reiniciar todas las opciones de configuración del',
+    areYouSureYouWantToResetAllConfigurationOptionsForThe:
+        '¿Estás seguro de que desea reiniciar todas las opciones de configuración del',
     domain: 'dominio?',
     areYouSureYouWantToRemoveThe: '¿Estás seguro de que quieres quitar la ',
     domainConfiguration: 'configuración de dominio?',

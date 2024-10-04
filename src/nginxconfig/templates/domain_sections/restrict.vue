@@ -1,5 +1,5 @@
 <!--
-Copyright 2022 DigitalOcean
+Copyright 2024 DigitalOcean
 
 This code is licensed under the MIT License.
 You may obtain a copy of the License at
@@ -36,8 +36,15 @@ THE SOFTWARE.
                         <div class="field">
                             <div :class="`control${getMethodChanged ? ' is-changed' : ''}`">
                                 <div class="checkbox">
-                                    <PrettyCheck v-model="getMethod" class="p-default p-curve p-fill p-icon">
-                                        {{ $t('templates.domainSections.restrict.disableForThisDomain') }}
+                                    <PrettyCheck
+                                        v-model="getMethod"
+                                        class="p-default p-curve p-fill p-icon"
+                                    >
+                                        {{
+                                            $t(
+                                                'templates.domainSections.restrict.disableForThisDomain',
+                                            )
+                                        }}
                                     </PrettyCheck>
                                 </div>
                             </div>
@@ -52,8 +59,15 @@ THE SOFTWARE.
                         <div class="field">
                             <div :class="`control${postMethodChanged ? ' is-changed' : ''}`">
                                 <div class="checkbox">
-                                    <PrettyCheck v-model="postMethod" class="p-default p-curve p-fill p-icon">
-                                        {{ $t('templates.domainSections.restrict.disableForThisDomain') }}
+                                    <PrettyCheck
+                                        v-model="postMethod"
+                                        class="p-default p-curve p-fill p-icon"
+                                    >
+                                        {{
+                                            $t(
+                                                'templates.domainSections.restrict.disableForThisDomain',
+                                            )
+                                        }}
                                     </PrettyCheck>
                                 </div>
                             </div>
@@ -68,8 +82,15 @@ THE SOFTWARE.
                         <div class="field">
                             <div :class="`control${putMethodChanged ? ' is-changed' : ''}`">
                                 <div class="checkbox">
-                                    <PrettyCheck v-model="putMethod" class="p-default p-curve p-fill p-icon">
-                                        {{ $t('templates.domainSections.restrict.disableForThisDomain') }}
+                                    <PrettyCheck
+                                        v-model="putMethod"
+                                        class="p-default p-curve p-fill p-icon"
+                                    >
+                                        {{
+                                            $t(
+                                                'templates.domainSections.restrict.disableForThisDomain',
+                                            )
+                                        }}
                                     </PrettyCheck>
                                 </div>
                             </div>
@@ -84,8 +105,15 @@ THE SOFTWARE.
                         <div class="field">
                             <div :class="`control${patchMethodChanged ? ' is-changed' : ''}`">
                                 <div class="checkbox">
-                                    <PrettyCheck v-model="patchMethod" class="p-default p-curve p-fill p-icon">
-                                        {{ $t('templates.domainSections.restrict.disableForThisDomain') }}
+                                    <PrettyCheck
+                                        v-model="patchMethod"
+                                        class="p-default p-curve p-fill p-icon"
+                                    >
+                                        {{
+                                            $t(
+                                                'templates.domainSections.restrict.disableForThisDomain',
+                                            )
+                                        }}
                                     </PrettyCheck>
                                 </div>
                             </div>
@@ -100,8 +128,15 @@ THE SOFTWARE.
                         <div class="field">
                             <div :class="`control${deleteMethodChanged ? ' is-changed' : ''}`">
                                 <div class="checkbox">
-                                    <PrettyCheck v-model="deleteMethod" class="p-default p-curve p-fill p-icon">
-                                        {{ $t('templates.domainSections.restrict.disableForThisDomain') }}
+                                    <PrettyCheck
+                                        v-model="deleteMethod"
+                                        class="p-default p-curve p-fill p-icon"
+                                    >
+                                        {{
+                                            $t(
+                                                'templates.domainSections.restrict.disableForThisDomain',
+                                            )
+                                        }}
                                     </PrettyCheck>
                                 </div>
                             </div>
@@ -118,8 +153,15 @@ THE SOFTWARE.
                         <div class="field">
                             <div :class="`control${headMethodChanged ? ' is-changed' : ''}`">
                                 <div class="checkbox">
-                                    <PrettyCheck v-model="headMethod" class="p-default p-curve p-fill p-icon">
-                                        {{ $t('templates.domainSections.restrict.disableForThisDomain') }}
+                                    <PrettyCheck
+                                        v-model="headMethod"
+                                        class="p-default p-curve p-fill p-icon"
+                                    >
+                                        {{
+                                            $t(
+                                                'templates.domainSections.restrict.disableForThisDomain',
+                                            )
+                                        }}
                                     </PrettyCheck>
                                 </div>
                             </div>
@@ -134,8 +176,15 @@ THE SOFTWARE.
                         <div class="field">
                             <div :class="`control${connectMethodChanged ? ' is-changed' : ''}`">
                                 <div class="checkbox">
-                                    <PrettyCheck v-model="connectMethod" class="p-default p-curve p-fill p-icon">
-                                        {{ $t('templates.domainSections.restrict.disableForThisDomain') }}
+                                    <PrettyCheck
+                                        v-model="connectMethod"
+                                        class="p-default p-curve p-fill p-icon"
+                                    >
+                                        {{
+                                            $t(
+                                                'templates.domainSections.restrict.disableForThisDomain',
+                                            )
+                                        }}
                                     </PrettyCheck>
                                 </div>
                             </div>
@@ -150,8 +199,15 @@ THE SOFTWARE.
                         <div class="field">
                             <div :class="`control${optionsMethodChanged ? ' is-changed' : ''}`">
                                 <div class="checkbox">
-                                    <PrettyCheck v-model="optionsMethod" class="p-default p-curve p-fill p-icon">
-                                        {{ $t('templates.domainSections.restrict.disableForThisDomain') }}
+                                    <PrettyCheck
+                                        v-model="optionsMethod"
+                                        class="p-default p-curve p-fill p-icon"
+                                    >
+                                        {{
+                                            $t(
+                                                'templates.domainSections.restrict.disableForThisDomain',
+                                            )
+                                        }}
                                     </PrettyCheck>
                                 </div>
                             </div>
@@ -166,8 +222,15 @@ THE SOFTWARE.
                         <div class="field">
                             <div :class="`control${traceMethodChanged ? ' is-changed' : ''}`">
                                 <div class="checkbox">
-                                    <PrettyCheck v-model="traceMethod" class="p-default p-curve p-fill p-icon">
-                                        {{ $t('templates.domainSections.restrict.disableForThisDomain') }}
+                                    <PrettyCheck
+                                        v-model="traceMethod"
+                                        class="p-default p-curve p-fill p-icon"
+                                    >
+                                        {{
+                                            $t(
+                                                'templates.domainSections.restrict.disableForThisDomain',
+                                            )
+                                        }}
                                     </PrettyCheck>
                                 </div>
                             </div>
@@ -176,9 +239,14 @@ THE SOFTWARE.
                 </div>
             </div>
         </div>
-        <div v-if="hasAtLeastOneEnabled" class="field is-horizontal">
+        <div
+            v-if="hasAtLeastOneEnabled"
+            class="field is-horizontal"
+        >
             <div class="field-label">
-                <label class="label">{{ $t('templates.domainSections.restrict.responseCode') }}</label>
+                <label class="label">
+                    {{ $t('templates.domainSections.restrict.responseCode') }}
+                </label>
             </div>
             <div class="field-body">
                 <div class="field">
@@ -199,9 +267,9 @@ THE SOFTWARE.
 </template>
 
 <script>
-    import delegatedFromDefaults from '../../util/delegated_from_defaults';
-    import computedFromDefaults from '../../util/computed_from_defaults';
-    import PrettyCheck from '../inputs/checkbox';
+    import delegatedFromDefaults from '../../util/delegated_from_defaults.js';
+    import computedFromDefaults from '../../util/computed_from_defaults.js';
+    import PrettyCheck from '../inputs/checkbox.vue';
 
     const defaults = {
         getMethod: {
@@ -247,25 +315,29 @@ THE SOFTWARE.
     };
 
     export default {
-        name: 'DomainRestrict',                             // Component name
-        display: 'common.restrict',                         // Display name for tab (i18n key)
-        key: 'restrict',                                    // Key for data in parent
-        delegated: delegatedFromDefaults(defaults),         // Data the parent will present here
+        name: 'DomainRestrict', // Component name
+        display: 'common.restrict', // Display name for tab (i18n key)
+        key: 'restrict', // Key for data in parent
+        delegated: delegatedFromDefaults(defaults), // Data the parent will present here
         components: {
             PrettyCheck,
         },
         props: {
-            data: Object,                                   // Data delegated back to us from parent
+            data: Object, // Data delegated back to us from parent
         },
-        data () {
+        data() {
             return {
                 validResponseCode: true,
             };
         },
         computed: {
-            ...computedFromDefaults(defaults, 'restrict'),  // Getters & setters for the delegated data
+            ...computedFromDefaults(defaults, 'restrict'), // Getters & setters for the delegated data
             hasAtLeastOneEnabled() {
-                return (Object.keys(this.$props.data).filter(k => this.$props.data[k].computed && k !== 'responseCode')).length > 0;
+                return (
+                    Object.keys(this.$props.data).filter(
+                        (k) => this.$props.data[k].computed && k !== 'responseCode',
+                    ).length > 0
+                );
             },
         },
         watch: {

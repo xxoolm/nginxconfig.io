@@ -1,5 +1,5 @@
 /*
-Copyright 2021 DigitalOcean
+Copyright 2024 DigitalOcean
 
 This code is licensed under the MIT License.
 You may obtain a copy of the License at
@@ -24,10 +24,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-import common from '../../common';
+import common from '../../common.js';
 
 export default {
-    generateDiffieHellmanKeysByRunningThisCommandOnYourServer: 'Erzeuge <b>Diffie-Hellman Schlüssel</b> indem du diesen Befehl auf deinem Server ausführst:',
+    generateDiffieHellmanKeysByRunningThisCommandOnYourServer:
+        'Erzeuge <b>Diffie-Hellman Schlüssel</b> indem du diesen Befehl auf deinem Server ausführst:',
     createACommonAcmeChallengeDirectoryForLetsEncrypt: `Erstelle ein <b>ACME-Challenge</b> Verzeichnis (für <b>${common.letsEncrypt}</b>):`,
     noAdditionalStepsAreNeededToSetUpSslForNginx: `Es sind keine weiteren Schritte nötig, um ${common.ssl} für deine ${common.nginx} Konfiguration einzurichten.`,
     sslInit: `${common.ssl} initialisieren`,

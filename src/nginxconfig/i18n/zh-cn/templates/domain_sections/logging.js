@@ -1,5 +1,5 @@
 /*
-Copyright 2022 DigitalOcean
+Copyright 2024 DigitalOcean
 
 This code is licensed under the MIT License.
 You may obtain a copy of the License at
@@ -24,12 +24,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-import common from '../../common';
+import common from '../../common.js';
 
 export default {
     byDomain: '在此站点',
     enableForThisDomain: `为此站点${common.enable}`,
-    arguments: 'arguments', // TODO: translate
-    level: 'logging level', // TODO: translate
-    forRedirects: 'for redirects', // TODO: translate
+    arguments: '参数',
+    level: '日志记录级别',
+    forRedirects: '记录重定向',
 };

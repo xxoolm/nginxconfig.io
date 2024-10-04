@@ -1,5 +1,5 @@
 /*
-Copyright 2021 DigitalOcean
+Copyright 2024 DigitalOcean
 
 This code is licensed under the MIT License.
 You may obtain a copy of the License at
@@ -24,7 +24,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-import common from '../../common';
+import common from '../../common.js';
 
 export default {
     modularizedStructure: 'Модульная структура',
@@ -43,10 +43,12 @@ export default {
     yesImSure: 'Да, я уверен',
     noCancel: 'Нет, отменить',
     tools: 'Инструменты',
-    resetGlobalConfigBody: 'Вы уверены, что хотите сбросить все параметры конфигурации в разделе глобальной конфигурации?',
+    resetGlobalConfigBody:
+        'Вы уверены, что хотите сбросить все параметры конфигурации в разделе глобальной конфигурации?',
     resetAllDomainsConfigBody: 'Вы уверены, что хотите сбросить конфигурацию ВСЕХ доменов?',
     removeAllDomainsBody: 'Вы действительно хотите удалить ВСЕ конфигурации домена?',
-    areYouSureYouWantToResetAllConfigurationOptionsForThe: 'Вы действительно хотите сбросить все параметры конфигурации для',
+    areYouSureYouWantToResetAllConfigurationOptionsForThe:
+        'Вы действительно хотите сбросить все параметры конфигурации для',
     domain: 'домена?',
     areYouSureYouWantToRemoveThe: 'Вы уверены, что желаете удалить ',
     domainConfiguration: 'конфигурацию домена?',

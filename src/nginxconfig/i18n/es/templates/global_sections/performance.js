@@ -1,5 +1,5 @@
 /*
-Copyright 2022 DigitalOcean
+Copyright 2024 DigitalOcean
 
 This code is licensed under the MIT License.
 You may obtain a copy of the License at
@@ -24,9 +24,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-import common from '../../common';
+import common from '../../common.js';
 
-export default {    
+export default {
     disableHtmlCaching: 'Disable HTML caching', // TODO: translate
     enableDisableHtmlCaching: 'disable HTML caching', // TODO: translate
     gzipCompression: 'Compresión Gzip',

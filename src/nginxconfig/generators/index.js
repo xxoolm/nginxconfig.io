@@ -1,5 +1,5 @@
 /*
-Copyright 2021 DigitalOcean
+Copyright 2024 DigitalOcean
 
 This code is licensed under the MIT License.
 You may obtain a copy of the License at
@@ -24,23 +24,23 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-import toConf from './to_conf';
-import toYaml from './to_yaml';
-import nginxConf from './conf/nginx.conf';
-import websiteConf from './conf/website.conf';
-import letsEncryptConf from './conf/letsencrypt.conf';
-import securityConf from './conf/security.conf';
-import generalConf from './conf/general.conf';
-import phpConf from './conf/php_fastcgi.conf';
-import pythonConf from './conf/python_uwsgi.conf';
-import proxyConf from './conf/proxy.conf';
-import wordPressConf from './conf/wordpress.conf';
-import drupalConf from './conf/drupal.conf';
-import magentoConf from './conf/magento.conf';
-import joomlaConf from './conf/joomla.conf';
-import dockerComposeYaml from './yaml/dockerCompose.yaml';
-import dockerConf from './ext/docker';
-import shareQuery from '../util/share_query';
+import toConf from './to_conf.js';
+import toYaml from './to_yaml.js';
+import nginxConf from './conf/nginx.conf.js';
+import websiteConf from './conf/website.conf.js';
+import letsEncryptConf from './conf/letsencrypt.conf.js';
+import securityConf from './conf/security.conf.js';
+import generalConf from './conf/general.conf.js';
+import phpConf from './conf/php_fastcgi.conf.js';
+import pythonConf from './conf/python_uwsgi.conf.js';
+import proxyConf from './conf/proxy.conf.js';
+import wordPressConf from './conf/wordpress.conf.js';
+import drupalConf from './conf/drupal.conf.js';
+import magentoConf from './conf/magento.conf.js';
+import joomlaConf from './conf/joomla.conf.js';
+import dockerComposeYaml from './yaml/dockerCompose.yaml.js';
+import dockerConf from './ext/docker.js';
+import shareQuery from '../util/share_query.js';
 
 export default (domains, global) => {
     const files = {};
@@ -49,8 +49,7 @@ export default (domains, global) => {
     files['nginx.conf'] = toConf(nginxConf(domains, global));
 
     // Dockerfile
-    if (global.docker.dockerfile.computed)
-        files['Dockerfile'] = dockerConf();
+    if (global.docker.dockerfile.computed) files['Dockerfile'] = dockerConf();
 
     if (global.docker.dockerCompose.computed)
         files['docker-compose.yaml'] = toYaml(dockerComposeYaml());
@@ -61,14 +60,18 @@ export default (domains, global) => {
         const sitesDir = `sites-${global.tools.symlinkVhost.computed ? 'available' : 'enabled'}`;
         const ipPortPairs = new Set();
         for (const domain of domains) {
-            files[`${sitesDir}/${domain.server.domain.computed}.conf`] = toConf(websiteConf(domain, domains, global, ipPortPairs));
+            files[`${sitesDir}/${domain.server.domain.computed}.conf`] = toConf(
+                websiteConf(domain, domains, global, ipPortPairs),
+            );
             // WordPress
-            if (domains.some(d => d.php.wordPressRules.computed))
-                files[`nginxconfig.io/${domain.server.domain.computed}.wordpress.conf`] = toConf(wordPressConf(global, domain));
+            if (domains.some((d) => d.php.wordPressRules.computed))
+                files[`nginxconfig.io/${domain.server.domain.computed}.wordpress.conf`] = toConf(
+                    wordPressConf(global, domain),
+                );
         }
 
         // Let's encrypt
-        if (domains.some(d => d.https.certType.computed === 'letsEncrypt'))
+        if (domains.some((d) => d.https.certType.computed === 'letsEncrypt'))
             files['nginxconfig.io/letsencrypt.conf'] = toConf(letsEncryptConf(global));
 
         // Security
@@ -78,37 +81,40 @@ export default (domains, global) => {
         files['nginxconfig.io/general.conf'] = toConf(generalConf(domains, global));
 
         // PHP
-        if (domains.some(d => d.php.php.computed))
+        if (domains.some((d) => d.php.php.computed))
             files['nginxconfig.io/php_fastcgi.conf'] = toConf(phpConf(domains));
 
         // Python
-        if (domains.some(d => d.python.python.computed))
+        if (domains.some((d) => d.python.python.computed))
             files['nginxconfig.io/python_uwsgi.conf'] = toConf(pythonConf(global));
 
         // Reverse proxy
-        if (domains.some(d => d.reverseProxy.reverseProxy.computed))
+        if (domains.some((d) => d.reverseProxy.reverseProxy.computed))
             files['nginxconfig.io/proxy.conf'] = toConf(proxyConf(global));
 
         // Drupal
-        if (domains.some(d => d.php.drupalRules.computed))
+        if (domains.some((d) => d.php.drupalRules.computed))
             files['nginxconfig.io/drupal.conf'] = toConf(drupalConf(global));
 
         // Magento
-        if (domains.some(d => d.php.magentoRules.computed))
+        if (domains.some((d) => d.php.magentoRules.computed))
             files['nginxconfig.io/magento.conf'] = toConf(magentoConf());
 
         // Joomla
-        if (domains.some(d => d.php.joomlaRules.computed))
+        if (domains.some((d) => d.php.joomlaRules.computed))
             files['nginxconfig.io/joomla.conf'] = toConf(joomlaConf());
-
     } else {
         // PHP
-        if (domains.some(d => d.php.wordPressRules.computed))
+        if (domains.some((d) => d.php.wordPressRules.computed))
             files['nginxconfig.io/php_fastcgi.conf'] = toConf(phpConf(domains));
     }
 
-    const query = shareQuery(domains.map((domain, index) => [domain, index]).filter(d => d[0] !== null), global);
-    files['nginxconfig.txt'] = `${window.location.protocol}//${window.location.host}${window.location.pathname}${query}`;
+    const query = shareQuery(
+        domains.map((domain, index) => [domain, index]).filter((d) => d[0] !== null),
+        global,
+    );
+    files['nginxconfig.txt'] =
+        `${window.location.protocol}//${window.location.host}${window.location.pathname}${query}`;
 
     return files;
 };

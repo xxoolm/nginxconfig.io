@@ -1,5 +1,5 @@
 /*
-Copyright 2021 DigitalOcean
+Copyright 2024 DigitalOcean
 
 This code is licensed under the MIT License.
 You may obtain a copy of the License at
@@ -24,7 +24,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-import common from '../../common';
+import common from '../../common.js';
 
 export default {
     downloadTheGeneratedConfig: '<b>Скачать</b> сгенерированную конфигурацию:',
@@ -32,9 +32,11 @@ export default {
     directory: 'директория.',
     or: 'или, ',
     copyBase64StringOfCompressedConfig: 'Скопируйте Base64 c сжатой конфигурацией',
-    pasteItInYourServersCommandLineAndExecute: ', вставьте это в Вашу командную строку на сервере и запустите.',
+    pasteItInYourServersCommandLineAndExecute:
+        ', вставьте это в Вашу командную строку на сервере и запустите.',
     navigateToYourNginxConfigurationDirectoryOnYourServer: `Перейдите в <b>папку конфигурации</b> ${common.nginx} на Вашем сервере:`,
     createABackupOfYourCurrentNginxConfiguration: `Сделайте <b>резервную копию</b> Вашей нынешней ${common.nginx} конфигурации:`,
-    extractTheNewCompressedConfigurationArchiveUsingTar: '<b>Извлеките</b> архив с новой конфигурацией с помощью использованием tar:',
+    extractTheNewCompressedConfigurationArchiveUsingTar:
+        '<b>Извлеките</b> архив с новой конфигурацией с помощью использованием tar:',
     download: 'Скачать',
 };

@@ -1,5 +1,5 @@
 /*
-Copyright 2022 DigitalOcean
+Copyright 2024 DigitalOcean
 
 This code is licensed under the MIT License.
 You may obtain a copy of the License at
@@ -26,10 +26,10 @@ THE SOFTWARE.
 
 import qs from 'qs';
 import clone from 'clone';
-import Domain from '../templates/domain';
-import isObject from './is_object';
-import angularBackwardsCompatibility from './angular_backwards_compatibility';
-import vueBackwardsCompatibility from './vue_backwards_compatibility';
+import Domain from '../templates/domain.vue';
+import isObject from './is_object.js';
+import angularBackwardsCompatibility from './angular_backwards_compatibility.js';
+import vueBackwardsCompatibility from './vue_backwards_compatibility.js';
 
 const applyCategories = (categories, target) => {
     // Work through each potential category
@@ -61,67 +61,70 @@ const applyCategories = (categories, target) => {
     }
 };
 
-export default (query, domains, global, nextTick) => new Promise(resolve => {
-    const data = qs.parse(query, {
-        ignoreQueryPrefix: true,
-        allowDots: true,
-        parseArrays: false,
-        decoder(value) {
-            value = decodeURIComponent(value);
+export default (query, domains, global, nextTick) =>
+    new Promise((resolve) => {
+        const data = qs.parse(query, {
+            ignoreQueryPrefix: true,
+            allowDots: true,
+            parseArrays: false,
+            decoder(value) {
+                value = decodeURIComponent(value);
 
-            // If it's a set of digits, parse it as a float
-            if (/^(\d+|\d*\.\d+)$/.test(value)) return parseFloat(value);
+                // If it's a set of digits, parse it as a float
+                if (/^(\d+|\d*\.\d+)$/.test(value)) return parseFloat(value);
 
-            // If it matches a keyword, convert it
-            let keywords = {
-                true: true,
-                false: false,
-                null: null,
-                undefined: undefined,
-            };
-            if (value in keywords) return keywords[value];
+                // If it matches a keyword, convert it
+                let keywords = {
+                    true: true,
+                    false: false,
+                    null: null,
+                    undefined: undefined,
+                };
+                if (value in keywords) return keywords[value];
 
-            // Otherwise, leave it as is
-            return value;
-        },
-    });
+                // Otherwise, leave it as is
+                return value;
+            },
+        });
 
-    // Handle converting nginxconfig.io-angular params to the current version
-    angularBackwardsCompatibility(data);
+        // Handle converting nginxconfig.io-angular params to the current version
+        angularBackwardsCompatibility(data);
 
-    // Handle converting vue params to the current version
-    vueBackwardsCompatibility(data);
+        // Handle converting vue params to the current version
+        vueBackwardsCompatibility(data);
 
-    // Handle domains
-    if ('domains' in data && isObject(data.domains)) {
-        // Work through all valid integer keys in the object
-        const keys = Object.keys(data.domains).map(x => parseInt(x)).filter(x => !isNaN(x));
-        for (let i = 0; i < Math.max(...keys) + 1; i++) {
-            // If the key doesn't exist or this isn't a valid object, assume it was an untouched example domain
-            if (!keys.includes(i) || !isObject(data.domains[i])) {
-                domains.push(clone(Domain.delegated));
-                continue;
+        // Handle domains
+        if ('domains' in data && isObject(data.domains)) {
+            // Work through all valid integer keys in the object
+            const keys = Object.keys(data.domains)
+                .map((x) => parseInt(x))
+                .filter((x) => !isNaN(x));
+            for (let i = 0; i < Math.max(...keys) + 1; i++) {
+                // If the key doesn't exist or this isn't a valid object, assume it was an untouched example domain
+                if (!keys.includes(i) || !isObject(data.domains[i])) {
+                    domains.push(clone(Domain.delegated));
+                    continue;
+                }
+
+                // Create a new domain (assume it has had custom user settings)
+                // Push transforms the object to a proxy, so re-fetch the proxy from the array
+                const domainImported = domains[domains.push(clone(Domain.delegated)) - 1];
+                domainImported.hasUserInteraction = true;
+
+                // Apply the initial values on the next Vue tick, once the watchers are ready
+                nextTick(() => applyCategories(data.domains[i], domainImported));
             }
-
-            // Create a new domain (assume it has had custom user settings)
-            // Push transforms the object to a proxy, so re-fetch the proxy from the array
-            const domainImported = domains[domains.push(clone(Domain.delegated)) - 1];
-            domainImported.hasUserInteraction = true;
-
-            // Apply the initial values on the next Vue tick, once the watchers are ready
-            nextTick(() => applyCategories(data.domains[i], domainImported));
+        } else {
+            // If no configured domains, add a single default
+            domains.push(clone(Domain.delegated));
         }
-    } else {
-        // If no configured domains, add a single default
-        domains.push(clone(Domain.delegated));
-    }
 
-    // Handle global settings
-    if ('global' in data) {
-        // If this is an object, apply any potential data
-        if (isObject(data.global)) applyCategories(data.global, global);
-    }
+        // Handle global settings
+        if ('global' in data) {
+            // If this is an object, apply any potential data
+            if (isObject(data.global)) applyCategories(data.global, global);
+        }
 
-    // Resolve after everything has updated
-    nextTick(() => nextTick(() => resolve(data)));
-});
+        // Resolve after everything has updated
+        nextTick(() => nextTick(() => resolve(data)));
+    });

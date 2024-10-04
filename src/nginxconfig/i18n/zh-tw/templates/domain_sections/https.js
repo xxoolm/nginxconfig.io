@@ -1,5 +1,5 @@
 /*
-Copyright 2022 DigitalOcean
+Copyright 2024 DigitalOcean
 
 This code is licensed under the MIT License.
 You may obtain a copy of the License at
@@ -24,7 +24,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-import common from '../../common';
+import common from '../../common.js';
 
 export default {
     enableEncryptedSslConnection: `${common.enable}加密的 ${common.ssl} 連線`,
@@ -42,7 +42,7 @@ export default {
     letsEncryptEmail: `${common.letsEncrypt} 電子郵件地址`,
     http3IsANonStandardModule: 'HTTP/3 並不是標準的 NGINX 模組，請查閱 ',
     http3NginxQuicReadme: 'NGINX QUIC 說明',
-    http3OrThe: ' 或者 ', 
+    http3OrThe: ' 或者 ',
     http3CloudflareQuicheProject: 'Cloudflare quiche 專案',
     http3ForBuildingNginxWithHttp3: '以了解如何建置支援 HTTP/3 的 NGINX !',
 };

@@ -1,5 +1,5 @@
 /*
-Copyright 2021 DigitalOcean
+Copyright 2024 DigitalOcean
 
 This code is licensed under the MIT License.
 You may obtain a copy of the License at
@@ -24,7 +24,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-import common from '../../common';
+import common from '../../common.js';
 
 export default {
     enableEncryptedSslConnection: `${common.enable} les connexions ${common.ssl}`,
@@ -40,7 +40,7 @@ export default {
     certificationType: 'Type de certification',
     customCertificate: 'Certificat personnalisé',
     letsEncryptEmail: `E-mail ${common.letsEncrypt}`,
-    http3IsANonStandardModule: 'HTTP/3 n\'est pas un module standard de NGINX, veuillez lire ',
+    http3IsANonStandardModule: "HTTP/3 n'est pas un module standard de NGINX, veuillez lire ",
     http3NginxQuicReadme: 'le Readme de NGINX QUIC',
     http3OrThe: ' ou le ',
     http3CloudflareQuicheProject: 'projet Cloudflare quiche',

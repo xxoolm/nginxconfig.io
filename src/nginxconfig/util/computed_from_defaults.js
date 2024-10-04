@@ -1,5 +1,5 @@
 /*
-Copyright 2020 DigitalOcean
+Copyright 2024 DigitalOcean
 
 This code is licensed under the MIT License.
 You may obtain a copy of the License at
@@ -24,7 +24,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-import isChanged from './is_changed';
+import isChanged from './is_changed.js';
 
 export default (defaults, cat, isInteraction = true) => {
     return Object.keys(defaults).reduce((prev, key) => {
@@ -32,15 +32,17 @@ export default (defaults, cat, isInteraction = true) => {
             get() {
                 return this.$props.data[key].value;
             },
-            set (value) {
+            set(value) {
                 // Save user interaction if value changed
-                if (isInteraction
-                    && this.$parent
-                    && 'data' in this.$parent.$props
-                    && 'hasUserInteraction' in this.$parent.$props.data
-                    && !this.$parent.$props.data.hasUserInteraction
-                    && this.$props.data[key].value !== value)
-                        this.$parent.$props.data.hasUserInteraction = true;
+                if (
+                    isInteraction &&
+                    this.$parent &&
+                    'data' in this.$parent.$props &&
+                    'hasUserInteraction' in this.$parent.$props.data &&
+                    !this.$parent.$props.data.hasUserInteraction &&
+                    this.$props.data[key].value !== value
+                )
+                    this.$parent.$props.data.hasUserInteraction = true;
 
                 this.$props.data[key].value = value;
                 this.$props.data[key].computed = value;

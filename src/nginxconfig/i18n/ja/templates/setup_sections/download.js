@@ -1,5 +1,5 @@
 /*
-Copyright 2022 DigitalOcean
+Copyright 2024 DigitalOcean
 
 This code is licensed under the MIT License.
 You may obtain a copy of the License at
@@ -24,17 +24,19 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-import common from '../../common';
+import common from '../../common.js';
 
 export default {
     downloadTheGeneratedConfig: '生成された設定ファイルを<b>ダウンロードします</b>:',
-    andUploadItToYourServers: 'そして、ご利用のサーバの以下のディレクトリに設定ファイルを <b>アップロードします</b>',
+    andUploadItToYourServers:
+        'そして、ご利用のサーバの以下のディレクトリに設定ファイルを <b>アップロードします</b>',
     directory: '。',
     or: 'もしくは、',
     copyBase64StringOfCompressedConfig: '設定が圧縮されたbase64文字列をコピーし',
     pasteItInYourServersCommandLineAndExecute: '、 サーバのコマンドラインにペーストして実行します',
     navigateToYourNginxConfigurationDirectoryOnYourServer: `サーバの ${common.nginx} の<b>設定ディレクトリ</b>へ移動します:`,
     createABackupOfYourCurrentNginxConfiguration: `現在の ${common.nginx} の設定を<b>バックアップします</b>:`,
-    extractTheNewCompressedConfigurationArchiveUsingTar: 'tar を使って、新しい設定の入った圧縮ファイルを<b>展開します</b>:',
+    extractTheNewCompressedConfigurationArchiveUsingTar:
+        'tar を使って、新しい設定の入った圧縮ファイルを<b>展開します</b>:',
     download: 'ダウンロード',
 };

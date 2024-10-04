@@ -1,5 +1,5 @@
 /*
-Copyright 2022 DigitalOcean
+Copyright 2024 DigitalOcean
 
 This code is licensed under the MIT License.
 You may obtain a copy of the License at
@@ -24,7 +24,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-import common from '../../common';
+import common from '../../common.js';
 
 export default {
     modularizedStructure: 'モジュール化された構造',
@@ -46,7 +46,8 @@ export default {
     resetGlobalConfigBody: 'グローバル設定の全ての設定をリセットします、よろしいですか?',
     resetAllDomainsConfigBody: '全てのドメインの設定をリセットします、よろしいですか?',
     removeAllDomainsBody: '全てのドメインを削除します、よろしいですか?',
-    areYouSureYouWantToResetAllConfigurationOptionsForThe: '次のドメインの設定をリセットします、よろしいですか?',
+    areYouSureYouWantToResetAllConfigurationOptionsForThe:
+        '次のドメインの設定をリセットします、よろしいですか?',
     domain: '',
     areYouSureYouWantToRemoveThe: '次のドメインの設定を削除します、よろしいですか?',
     domainConfiguration: '',

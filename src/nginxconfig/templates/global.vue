@@ -1,5 +1,5 @@
 <!--
-Copyright 2022 DigitalOcean
+Copyright 2024 DigitalOcean
 
 This code is licensed under the MIT License.
 You may obtain a copy of the License at
@@ -28,10 +28,16 @@ THE SOFTWARE.
     <div class="panel">
         <div class="tabs">
             <ul>
-                <li v-for="tab in tabs" :class="tabClass(tab.key)">
+                <li
+                    v-for="tab in tabs"
+                    :class="tabClass(tab.key)"
+                >
                     <a @click="showTab(tab.key)">
                         {{ $t(tab.display) }}{{ changes(tab.key) }}
-                        <i v-if="warnings(tab.key)" class="fas fa-exclamation-triangle"></i>
+                        <i
+                            v-if="warnings(tab.key)"
+                            class="fas fa-exclamation-triangle"
+                        ></i>
                     </a>
                 </li>
             </ul>
@@ -48,20 +54,30 @@ THE SOFTWARE.
         ></component>
 
         <div class="navigation-buttons">
-            <a v-if="previousTab !== false" class="button is-mini" @click="showPreviousTab">
-                <i class="fas fa-long-arrow-alt-left"></i> <span>{{ $t('common.back') }}</span>
+            <a
+                v-if="previousTab !== false"
+                class="button is-mini"
+                @click="showPreviousTab"
+            >
+                <i class="fas fa-long-arrow-alt-left"></i>
+                <span>{{ $t('common.back') }}</span>
             </a>
-            <a v-if="nextTab !== false" class="button is-primary is-mini" @click="showNextTab">
-                <span>{{ $t('common.next') }}</span> <i class="fas fa-long-arrow-alt-right"></i>
+            <a
+                v-if="nextTab !== false"
+                class="button is-primary is-mini"
+                @click="showNextTab"
+            >
+                <span>{{ $t('common.next') }}</span>
+                <i class="fas fa-long-arrow-alt-right"></i>
             </a>
         </div>
     </div>
 </template>
 
 <script>
-    import analytics from '../util/analytics';
-    import isChanged from '../util/is_changed';
-    import Sections from './global_sections';
+    import analytics from '../util/analytics.js';
+    import isChanged from '../util/is_changed.js';
+    import Sections from './global_sections/index.js';
 
     const delegated = Sections.reduce((prev, tab) => {
         prev[tab.key] = tab.delegated;
@@ -70,9 +86,9 @@ THE SOFTWARE.
 
     export default {
         name: 'Global',
-        delegated,          // Data the parent will present here
+        delegated, // Data the parent will present here
         props: {
-            data: Object,   // Data delegated back to us from parent
+            data: Object, // Data delegated back to us from parent
         },
         data() {
             return {
@@ -82,13 +98,13 @@ THE SOFTWARE.
         },
         computed: {
             nextTab() {
-                const tabs = this.$data.tabs.map(t => t.key);
+                const tabs = this.$data.tabs.map((t) => t.key);
                 const index = tabs.indexOf(this.$data.active) + 1;
                 if (index < tabs.length) return tabs[index];
                 return false;
             },
             previousTab() {
-                const tabs = this.$data.tabs.map(t => t.key);
+                const tabs = this.$data.tabs.map((t) => t.key);
                 const index = tabs.indexOf(this.$data.active) - 1;
                 if (index >= 0) return tabs[index];
                 return false;
@@ -96,8 +112,9 @@ THE SOFTWARE.
         },
         methods: {
             changesCount(tab) {
-                return Object.keys(this.$props.data[tab])
-                    .filter(key => isChanged(this.$props.data[tab][key], tab, key)).length;
+                return Object.keys(this.$props.data[tab]).filter((key) =>
+                    isChanged(this.$props.data[tab][key], tab, key),
+                ).length;
             },
             changes(tab) {
                 const changes = this.changesCount(tab);
@@ -118,7 +135,7 @@ THE SOFTWARE.
                 const classes = [];
                 if (tab === this.$data.active) classes.push('is-active');
                 if (this.changesCount(tab)) classes.push('is-changed');
-                const tabs = this.$data.tabs.map(t => t.key);
+                const tabs = this.$data.tabs.map((t) => t.key);
                 if (tabs.indexOf(tab) < tabs.indexOf(this.$data.active)) classes.push('is-before');
                 return classes.join(' ');
             },
